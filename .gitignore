@@ -1,0 +1,17 @@
+.env
+config/argo-workflow-http-proxy.yaml
+config/workload-api.yaml
+config/workload.yaml
+gpdemo.pem
+tls.crt tls.key
+tls.crt
+tls.key
+app/__pycache__/
+app/analytics/__pycache__/
+cifar10
+cifar10.parquet
+app.log
+tmp.yaml
+tmp.json
+data
+data.zip
