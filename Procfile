@@ -1,1 +1,1 @@
-web: mkdir -p ./workspace && evidently ui --port 8080 –-demo-project
+web: mkdir -p ./workspace && evidently ui --port 8080
