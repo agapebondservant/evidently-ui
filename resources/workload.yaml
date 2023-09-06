@@ -6,7 +6,7 @@ metadata:
   labels:
     apps.tanzu.vmware.com/workload-type: web
     app.kubernetes.io/part-of: evidently
-    apis.apps.tanzu.vmware.com/register-api: "true"
+    apis.apps.tanzu.vmware.com/register-api: "false"
   annotations:
     autoscaling.knative.dev/minScale: "1"
 spec:
