@@ -1,4 +1,9 @@
 config/
+resources/
+workspace/
+Procfile
+requirements.txt
+setup.py
 .env*
 data
 resources
