@@ -1,9 +1,8 @@
 FROM python:3.10-slim
 
-WORKDIR ./workspace
 COPY requirements.txt /tmp
-RUN pip install -r /tmp/requirements.txt && \
-    mkdir -p ./workspace
+RUN pip install -r /tmp/requirements.txt && mkdir -p ./workspace
+COPY workspace/. /workspace/
 
-ENTRYPOINT evidently ui
-CMD --workspace ./workspace --port 8080 --demo-project
+ENTRYPOINT ["evidently ui"]
+CMD ["--port", "8080", "--demo-projects", "all"]
