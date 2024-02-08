@@ -31,10 +31,26 @@ source .env
 ### Install Evidently via vanilla Kubernetes<a name="k8s"/>
 
 #### Before you begin:
-1. Create an environment file `.env` (use `.env-sample` as a template), then run:
+Create an environment file `.env` (use `.env-sample` as a template), then run:
 ```
 source .env
 ```
+
+1. Deploy the Dashboard:
+```
+kubectl create ns evidently
+kubectl apply -f resources/other/service.yaml -n evidently
+watch kubectl get all -n evidently
+```
+
+Then access at _http://evidently.<YOUR_FDQN_DOMAIN>_ .
+
+2. To delete the Dashboard:
+```
+kubectl delete -f resources/other/service.yaml -n evidently
+kubectl delete ns evidently
+```
+
 ## Integrate with TAP
 
 * Deploy the app:

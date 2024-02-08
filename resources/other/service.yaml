@@ -1,0 +1,76 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: evidently-pvc
+spec:
+  storageClassName: generic
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: evidently-dashboard
+  labels:
+    app: evidently-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: evidently-dashboard
+  template:
+    metadata:
+      labels:
+        app: evidently-dashboard
+    spec:
+      containers:
+        - name: main
+          image: oawofolu/evidently-dashboard
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: evidently-snapshots
+              mountPath: /workspace
+      initContainers:
+        - name: main
+          image: oawofolu/evidently-dashboard
+          command: ["python"]
+          args: ["/tmp/monitoring.py"]
+          volumeMounts:
+            - name: evidently-snapshots
+              mountPath: /workspace
+      volumes:
+        - name: evidently-snapshots
+          persistentVolumeClaim:
+            claimName: evidently-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: evidently-dashboard-svc
+spec:
+  selector:
+    app: evidently-dashboard
+  ports:
+    - name: main
+      port: 8080
+      targetPort: 8080
+
+---
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: evidently-dashboard-httpproxy
+spec:
+  routes:
+    - conditions:
+        - prefix: /
+      services:
+        - name: evidently-dashboard-svc
+          port: 8080
+  virtualhost:
+    fqdn: evidently-dashboard.tanzudatatap.com
