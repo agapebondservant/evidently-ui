@@ -36,7 +36,12 @@ Create an environment file `.env` (use `.env-sample` as a template), then run:
 source .env
 ```
 
-1. Deploy the Dashboard:
+1. Build the container image (one-time op):
+```
+docker build -t ${DATA_E2E_REGISTRY_USERNAME}/evidently-dashboard -f resources/other/Dockerfile .
+docker push ${DATA_E2E_REGISTRY_USERNAME}/evidently-dashboard
+```
+2. Deploy the Dashboard:
 ```
 kubectl create ns evidently
 kubectl apply -f resources/other/service.yaml -n evidently

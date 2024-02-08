@@ -35,7 +35,7 @@ DEMO_MODE = True
 
 
 def generate_datasets(demo_mode=False):
-    print(f"Fetch from url: {DATASOURCE_URL}")
+    logging.info(f"Fetch from url: {DATASOURCE_URL}")
     data = pd.json_normalize(pd.read_json(DATASOURCE_URL)[DATASOURCE_REGION])
     data.sort_values(['training_run_timestamp', 'id'], ascending=False, inplace=True)
     current_data = reference_data = None
@@ -180,10 +180,10 @@ def create_workspace_project(workspace: str):
     if current_data_total is not None and reference_data_total is not None:
         max_rows = min(len(current_data_total), len(reference_data_total))
 
-        print(f"Number of rows fetched: {max_rows}")
+        logging.info(f"Number of rows fetched: {max_rows}")
 
         for i in range(0, max_rows, int(EVIDENTLY_BATCH_SIZE)):
-            print(f"Generating monitored data - batch [0 - {i+int(EVIDENTLY_BATCH_SIZE)}]...")
+            logging.info(f"Generating monitored data - batch [0 - {i+int(EVIDENTLY_BATCH_SIZE)}]...")
 
             ws.delete_project(project.id) if project else True
             project = create_project(ws)
@@ -197,7 +197,7 @@ def create_workspace_project(workspace: str):
             test_suite = create_test_suite(current_data, reference_data)
             ws.add_test_suite(project.id, test_suite)
 
-            print(f"Monitoring data for batch [0 - {i+int(EVIDENTLY_BATCH_SIZE)}] generated.")
+            logging.info(f"Monitoring data for batch [0 - {i+int(EVIDENTLY_BATCH_SIZE)}] generated.")
 
             time.sleep(int(EVIDENTLY_BATCH_PROCESSING_INTERVAL))
     else:

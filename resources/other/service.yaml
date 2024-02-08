@@ -32,17 +32,17 @@ spec:
           image: oawofolu/evidently-dashboard
           ports:
             - containerPort: 8080
-          volumeMounts:
-            - name: evidently-snapshots
-              mountPath: /workspace
+#          volumeMounts:
+#            - name: evidently-snapshots
+#              mountPath: /workspace
       initContainers:
-        - name: main
+        - name: monitoring
           image: oawofolu/evidently-dashboard
           command: ["python"]
           args: ["/tmp/monitoring.py"]
-          volumeMounts:
-            - name: evidently-snapshots
-              mountPath: /workspace
+#          volumeMounts:
+#            - name: evidently-snapshots
+#              mountPath: /workspace
       volumes:
         - name: evidently-snapshots
           persistentVolumeClaim:
