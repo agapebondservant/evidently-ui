@@ -1,13 +1,13 @@
 {
-  "id": "3532ee27-2826-4af9-90df-87407c802b2b",
-  "name": "Realtime Anomaly Detection Project",
+  "id": "5b68ef47-27aa-464d-a694-d20f51e00088",
+  "name": "Tanzu Realtime Anomaly Detection Project",
   "description": "Monitors credit card transactional data in near realtime.",
   "dashboard": {
-    "name": "Realtime Anomaly Detection Project",
+    "name": "Tanzu Realtime Anomaly Detection Project",
     "panels": [
       {
         "type": "evidently.ui.dashboards.reports.DashboardPanelCounter",
-        "id": "fdce382c-aeac-4ba4-babd-9765f6000160",
+        "id": "0ee3d70a-19c3-4cd0-914e-7721118dbcc9",
         "title": "Credit Card Transactions Dataset",
         "filter": {
           "metadata_values": {},
@@ -21,7 +21,7 @@
       },
       {
         "type": "evidently.ui.dashboards.reports.DashboardPanelCounter",
-        "id": "022f31ea-7bb4-416e-954a-587b7ca5c0a3",
+        "id": "3ed0c66c-7c02-424c-9c72-af59b0f96ae4",
         "title": "Model Calls",
         "filter": {
           "metadata_values": {},
@@ -41,7 +41,7 @@
       },
       {
         "type": "evidently.ui.dashboards.reports.DashboardPanelCounter",
-        "id": "7b2d8213-39ad-42d4-a101-8e0b89e690cb",
+        "id": "7bd07d35-91eb-4c8e-a1cf-32c43619bd98",
         "title": "Share of Drifted Features",
         "filter": {
           "metadata_values": {},
@@ -61,7 +61,7 @@
       },
       {
         "type": "evidently.ui.dashboards.reports.DashboardPanelPlot",
-        "id": "b1436b84-6b4b-4e9c-8cfe-ce41e5f63e19",
+        "id": "ee0e1e4a-61f9-4fc1-b15f-eaf22a0c53ad",
         "title": "Dataset Quality",
         "filter": {
           "metadata_values": {},
@@ -89,7 +89,7 @@
       },
       {
         "type": "evidently.ui.dashboards.reports.DashboardPanelPlot",
-        "id": "130cf2b4-b1c1-491b-960a-885de77cd07f",
+        "id": "0ba32e29-8073-42b5-aa31-f50b101fc892",
         "title": "Amount: Wasserstein drift distance",
         "filter": {
           "metadata_values": {},
@@ -112,7 +112,7 @@
       },
       {
         "type": "evidently.ui.dashboards.reports.DashboardPanelPlot",
-        "id": "c48c08fe-64c3-4698-a57c-66547574c8c7",
+        "id": "e7751d8d-d6d1-4d25-8717-40197fc605d9",
         "title": "Time-elapsed: Wasserstein drift distance",
         "filter": {
           "metadata_values": {},
