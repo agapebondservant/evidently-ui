@@ -22,7 +22,7 @@ import logging
 import time
 
 WORKSPACE = "workspace"
-WORKSPACE_PROJECT_NAME = "Realtime Anomaly Detection Project"
+WORKSPACE_PROJECT_NAME = "Tanzu Realtime Anomaly Detection Project"
 WORKSPACE_PROJECT_DESCRIPTION = "Monitors credit card transactional data in near realtime."
 DATASOURCE_URL_SERVER = os.getenv('inference_cache_server') or 'http://gfanomaly-server.tanzudatatap.com/gemfire-api/v1'
 DATASOURCE_REGION = os.getenv('inference_snapshot_region') or 'mds-region-greenplum'
