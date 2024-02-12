@@ -175,7 +175,7 @@ def create_workspace_project(workspace: str):
 
     current_data_total, reference_data_total = generate_datasets(demo_mode=DEMO_MODE)
 
-    project = None
+    project = create_project(ws)
 
     if current_data_total is not None and reference_data_total is not None:
         max_rows = min(len(current_data_total), len(reference_data_total))
@@ -185,8 +185,8 @@ def create_workspace_project(workspace: str):
         for i in range(0, max_rows, int(EVIDENTLY_BATCH_SIZE)):
             logging.info(f"Generating monitored data - batch [0 - {i+int(EVIDENTLY_BATCH_SIZE)}]...")
 
-            ws.delete_project(project.id) if project else True
-            project = create_project(ws)
+            # ws.delete_project(project.id) if project else True
+            # project = create_project(ws)
 
             current_data = current_data_total[: i + int(EVIDENTLY_BATCH_SIZE)]
             reference_data = reference_data_total[: i + int(EVIDENTLY_BATCH_SIZE)]
